@@ -3,6 +3,7 @@
 import { useState, useRef } from 'react';
 import WrappedSlide from '@/components/WrappedSlide';
 import RsvpForm from '@/components/RsvpForm';
+import AttendeesList from '@/components/AttendeesList';
 
 export default function Home() {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -65,6 +66,15 @@ export default function Home() {
       textColor: "text-white",
       isStatic: true,
       component: <RsvpForm />
+    },
+    {
+      id: "attendees",
+      title: "The Guest List",
+      content: "Who's bringing the vibes?",
+      bgColor: "bg-wrapped-purple",
+      textColor: "text-wrapped-green",
+      isStatic: true,
+      component: <AttendeesList />
     }
   ];
 

@@ -52,7 +52,7 @@ export default function RsvpForm() {
       }
 
       setStatus('success');
-      setMessage('Thanks for RSVPing! See you there!');
+      setMessage("You're on the list! Now scroll down to see your fellow party animals.");
     } catch (error) {
       console.error(error);
       setStatus('error');
