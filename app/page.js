@@ -15,8 +15,22 @@ export default function Home() {
       title: "It's That Time of Year",
       content: "Let's wrap up 2025 together!",
       bgColor: "bg-wrapped-bg",
-      textColor: "text-wrapped-pink",
-      doodle: <div className="doodle doodle-sunburst top-1/4 left-1/4" />
+      textColor: "text-wrapped-white",
+      doodle: (
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          {[...Array(20)].map((_, i) => (
+            <div key={i} className="doodle doodle-star" style={{
+              top: `${Math.random() * 100}%`,
+              left: `${Math.random() * 100}%`,
+              width: `${Math.random() * 15 + 5}px`,
+              height: `${Math.random() * 15 + 5}px`,
+              animationDelay: `${Math.random() * 5}s`,
+              transform: `rotate(${Math.random() * 360}deg)`,
+              opacity: Math.random() * 0.5 + 0.3
+            }} />
+          ))}
+        </div>
+      )
     },
     {
       id: "stat1",
@@ -60,7 +74,7 @@ export default function Home() {
     },
     {
       id: "rsvp",
-      title: "RSVP Now",
+      title: "RSVP",
       content: "Don't miss the party.",
       bgColor: "bg-wrapped-bg",
       textColor: "text-white",

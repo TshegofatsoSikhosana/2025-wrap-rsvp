@@ -8,6 +8,7 @@
   --color-wrapped-orange: #e67e22;
   --color-wrapped-yellow: #f1c40f;
   --color-wrapped-lime: #ccff00;
+  --color-wrapped-white: #ffffff;
   --font-display: var(--font-outfit);
 }
 
@@ -23,7 +24,7 @@
   .slide-container {
     @apply h-screen w-full flex flex-col items-center justify-center p-6 text-center transition-all duration-500 ease-in-out;
   }
-  
+
   .slide-title {
     @apply text-4xl md:text-6xl font-black mb-8 uppercase tracking-tighter leading-none;
   }
@@ -38,9 +39,17 @@
 
   /* Animations */
   @keyframes float {
-    0% { transform: translateY(0px); }
-    50% { transform: translateY(-20px); }
-    100% { transform: translateY(0px); }
+    0% {
+      transform: translateY(0px);
+    }
+
+    50% {
+      transform: translateY(-20px);
+    }
+
+    100% {
+      transform: translateY(0px);
+    }
   }
 
   .animate-float {
@@ -49,6 +58,7 @@
 }
 
 @layer components {
+
   /* Doodles */
   .doodle {
     @apply absolute pointer-events-none opacity-20;
@@ -58,6 +68,12 @@
     @apply w-64 h-64 bg-yellow-400;
     clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
     animation: spin 10s linear infinite;
+  }
+
+  .doodle-star {
+    @apply w-8 h-8 bg-yellow-200;
+    clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+    animation: pulse 3s ease-in-out infinite;
   }
 
   .doodle-blob {
@@ -73,18 +89,33 @@
   }
 
   .doodle-confetti {
-     @apply w-4 h-4 rounded-full bg-white absolute; 
-     animation: pop 1s ease-out infinite;
+    @apply w-4 h-4 rounded-full bg-white absolute;
+    animation: pop 1s ease-out infinite;
   }
-  
+
   @keyframes spin {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
+    from {
+      transform: rotate(0deg);
+    }
+
+    to {
+      transform: rotate(360deg);
+    }
   }
 
   @keyframes pop {
-     0% { transform: scale(0); opacity: 0; }
-     50% { opacity: 1; }
-     100% { transform: scale(1.5); opacity: 0; }
+    0% {
+      transform: scale(0);
+      opacity: 0;
+    }
+
+    50% {
+      opacity: 1;
+    }
+
+    100% {
+      transform: scale(1.5);
+      opacity: 0;
+    }
   }
 }
