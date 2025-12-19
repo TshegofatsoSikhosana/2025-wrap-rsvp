@@ -1,26 +1,90 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  --color-wrapped-bg: #121212;
+  --color-wrapped-primary: #1ed760;
+  --color-wrapped-pink: #d6006f;
+  --color-wrapped-purple: #8e44ad;
+  --color-wrapped-orange: #e67e22;
+  --color-wrapped-yellow: #f1c40f;
+  --color-wrapped-lime: #ccff00;
+  --font-display: var(--font-outfit);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  body {
+    background-color: var(--color-wrapped-bg);
+    color: white;
+    font-family: var(--font-display), sans-serif;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer components {
+  .slide-container {
+    @apply h-screen w-full flex flex-col items-center justify-center p-6 text-center transition-all duration-500 ease-in-out;
+  }
+  
+  .slide-title {
+    @apply text-4xl md:text-6xl font-black mb-8 uppercase tracking-tighter leading-none;
+  }
+
+  .slide-content {
+    @apply text-xl md:text-2xl font-medium max-w-2xl mx-auto opacity-90;
+  }
+
+  .gradient-text {
+    @apply text-transparent bg-clip-text bg-linear-to-r from-wrapped-pink via-wrapped-purple to-wrapped-orange;
+  }
+
+  /* Animations */
+  @keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+    100% { transform: translateY(0px); }
+  }
+
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+}
+
+@layer components {
+  /* Doodles */
+  .doodle {
+    @apply absolute pointer-events-none opacity-20;
+  }
+
+  .doodle-sunburst {
+    @apply w-64 h-64 bg-yellow-400;
+    clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+    animation: spin 10s linear infinite;
+  }
+
+  .doodle-blob {
+    @apply w-48 h-48 bg-purple-500 rounded-full mix-blend-multiply filter blur-xl;
+    animation: float 8s ease-in-out infinite;
+  }
+
+  .doodle-zigzag {
+    @apply w-full h-8;
+    background-image: linear-gradient(135deg, transparent 50%, #d6006f 50%), linear-gradient(45deg, transparent 50%, #d6006f 50%);
+    background-size: 20px 20px;
+    opacity: 0.3;
+  }
+
+  .doodle-confetti {
+     @apply w-4 h-4 rounded-full bg-white absolute; 
+     animation: pop 1s ease-out infinite;
+  }
+  
+  @keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+
+  @keyframes pop {
+     0% { transform: scale(0); opacity: 0; }
+     50% { opacity: 1; }
+     100% { transform: scale(1.5); opacity: 0; }
+  }
 }

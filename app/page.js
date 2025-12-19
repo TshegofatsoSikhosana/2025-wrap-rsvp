@@ -1,65 +1,151 @@
-import Image from "next/image";
+'use client';
+
+import { useState, useRef } from 'react';
+import WrappedSlide from '@/components/WrappedSlide';
+import RsvpForm from '@/components/RsvpForm';
 
 export default function Home() {
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const touchStartY = useRef(0);
+
+  const slides = [
+    {
+      id: "intro",
+      title: "It's That Time of Year",
+      content: "Let's wrap up 2025 together!",
+      bgColor: "bg-wrapped-bg",
+      textColor: "text-wrapped-pink",
+      doodle: <div className="doodle doodle-sunburst top-1/4 left-1/4" />
+    },
+    {
+      id: "stat1",
+      title: "You Spent...",
+      content: "365 days working hard.",
+      bgColor: "bg-wrapped-purple",
+      textColor: "text-wrapped-yellow",
+      doodle: (
+        <>
+          <div className="doodle doodle-blob top-10 right-10 delay-100" />
+          <div className="doodle doodle-blob bottom-20 left-20 bg-wrapped-pink delay-700" />
+        </>
+      )
+    },
+    {
+      id: "stat2",
+      title: "Your Top Genre Was...",
+      content: "Software Engineering & Chaos Management.",
+      bgColor: "bg-wrapped-orange",
+      textColor: "text-black",
+      doodle: <div className="doodle doodle-zigzag top-1/2 left-0 rotate-12" />
+    },
+    {
+      id: "invite",
+      title: "You belong in...",
+      content: "The night sky because you are a star!",
+      bgColor: "bg-wrapped-lime",
+      textColor: "text-black",
+      doodle: (
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+           {[...Array(20)].map((_, i) => (
+             <div key={i} className="doodle doodle-confetti" style={{
+               top: `${Math.random() * 100}%`,
+               left: `${Math.random() * 100}%`,
+               animationDelay: `${Math.random()}s`,
+               backgroundColor: ['#d6006f', '#8e44ad', '#f1c40f'][Math.floor(Math.random() * 3)]
+             }} />
+           ))}
+        </div>
+      )
+    },
+    {
+      id: "rsvp",
+      title: "RSVP Now",
+      content: "Don't miss the party.",
+      bgColor: "bg-wrapped-bg",
+      textColor: "text-white",
+      isStatic: true,
+      component: <RsvpForm />
+    }
+  ];
+
+  const nextSlide = () => {
+    if (currentSlide < slides.length - 1) {
+      setCurrentSlide(prev => prev + 1);
+    }
+  };
+
+  const prevSlide = () => {
+    if (currentSlide > 0) {
+      setCurrentSlide(prev => prev - 1);
+    }
+  };
+
+  const handleTouchStart = (e) => {
+    touchStartY.current = e.touches[0].clientY;
+  };
+
+  const handleTouchEnd = (e) => {
+    const touchEndY = e.changedTouches[0].clientY;
+    const diff = touchStartY.current - touchEndY;
+
+    if (diff > 50) {
+      nextSlide();
+    } else if (diff < -50) {
+      prevSlide();
+    }
+  };
+
+  const handleWheel = (e) => {
+     if (e.deltaY > 50) {
+        nextSlide();
+     } else if (e.deltaY < -50) {
+        prevSlide();
+     }
+  }
+
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.js file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+    <main 
+      className="h-screen w-full overflow-hidden relative"
+      onTouchStart={handleTouchStart}
+      onTouchEnd={handleTouchEnd}
+      onWheel={handleWheel}
+      onClick={nextSlide}
+    >
+      {slides.map((slide, index) => (
+        <div 
+          key={slide.id}
+          className={`absolute top-0 left-0 w-full h-full transition-transform duration-700 ease-in-out`}
+          style={{ transform: `translateY(${(index - currentSlide) * 100}%)` }}
+        >
+          <WrappedSlide 
+            title={slide.title} 
+            content={slide.content}
+            bgColor={slide.bgColor}
+            textColor={slide.textColor}
+            isStatic={slide.isStatic}
           >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+            {slide.doodle}
+            <div onClick={(e) => e.stopPropagation()}>
+               {slide.component}
+            </div>
+          </WrappedSlide>
         </div>
-      </main>
-    </div>
+      ))}
+
+      {/* Progress Bars */}
+      <div className="absolute top-4 left-0 w-full flex gap-2 px-4 z-50">
+        {slides.map((_, index) => (
+          <div key={index} className="h-1 flex-1 bg-white/30 rounded-full overflow-hidden">
+             <div 
+               className={`h-full bg-white transition-all duration-500 ${index <= currentSlide ? 'w-full' : 'w-0'}`}
+             />
+          </div>
+        ))}
+      </div>
+      
+      <div className="absolute bottom-8 left-0 w-full text-center text-white/50 text-sm animate-pulse z-40 pointer-events-none">
+        Tap or Scroll were you born in a barn?
+      </div>
+    </main>
   );
 }
