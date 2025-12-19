@@ -36,31 +36,13 @@ export default function RsvpForm() {
     setStatus('submitting');
     setMessage('');
 
-     const myRsvpData = {
-
-      name: 'Jane Doe',
-
-      attending: 'yes',
-
-      plusOne: true,
-
-      guestCount: 2,
-
-      plusOneName: 'John Smith',
-
-      songRequests: ['Bohemian Rhapsody', 'Sweet Caroline', 'Dancing Queen'],
-
-      dietaryRestrictions: 'None'
-
-    };
-
     try {
       const res = await fetch('/api/rsvp', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(myRsvpData),
+        body: JSON.stringify(formData),
       });
 
       const data = await res.json();
