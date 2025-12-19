@@ -9,7 +9,7 @@ export default function RsvpForm() {
     plusOne: false,
     guestCount: 1,
     plusOneName: '',
-    songRequests: ['', '', '', '', ''],
+    songRequests: ['', '', ''],
     dietaryRestrictions: '',
   });
 
@@ -36,13 +36,31 @@ export default function RsvpForm() {
     setStatus('submitting');
     setMessage('');
 
+     const myRsvpData = {
+
+      name: 'Jane Doe',
+
+      attending: 'yes',
+
+      plusOne: true,
+
+      guestCount: 2,
+
+      plusOneName: 'John Smith',
+
+      songRequests: ['Bohemian Rhapsody', 'Sweet Caroline', 'Dancing Queen'],
+
+      dietaryRestrictions: 'None'
+
+    };
+
     try {
       const res = await fetch('/api/rsvp', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify(myRsvpData),
       });
 
       const data = await res.json();
@@ -164,7 +182,7 @@ export default function RsvpForm() {
           </div>
 
           <div>
-             <label className="block text-sm font-bold mb-1 ml-1">Top 5 Song Requests</label>
+             <label className="block text-sm font-bold mb-1 ml-1">Top 3 Song Requests</label>
              <div className="space-y-2">
                {formData.songRequests.map((song, index) => (
                  <input
