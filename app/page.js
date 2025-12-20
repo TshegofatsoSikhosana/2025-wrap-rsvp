@@ -30,7 +30,8 @@ export default function Home() {
             }} />
           ))}
         </div>
-      )
+      ),
+      gif: '/minions.gif'
     },
     {
       id: "stat1",
@@ -43,7 +44,8 @@ export default function Home() {
           <div className="doodle doodle-blob top-10 right-10 delay-100" />
           <div className="doodle doodle-blob bottom-20 left-20 bg-wrapped-pink delay-700" />
         </>
-      )
+      ),
+      gif: '/nod.gif'
     },
     {
       id: "stat2",
@@ -51,7 +53,8 @@ export default function Home() {
       content: "Software Engineering & Chaos Management.",
       bgColor: "bg-wrapped-orange",
       textColor: "text-black",
-      doodle: <div className="doodle doodle-zigzag top-1/2 left-0 rotate-12" />
+      doodle: <div className="doodle doodle-zigzag top-1/2 left-0 rotate-12" />,
+      gif: '/confused.gif'
     },
     {
       id: "invite",
@@ -70,7 +73,8 @@ export default function Home() {
              }} />
            ))}
         </div>
-      )
+      ),
+      gif: '/nod.gif'
     },
     {
       id: "rsvp",
@@ -88,7 +92,8 @@ export default function Home() {
       bgColor: "bg-wrapped-purple",
       textColor: "text-wrapped-green",
       isStatic: true,
-      component: <AttendeesList />
+      component: <AttendeesList />,
+      gif: '/dance_bob.gif'
     }
   ];
 
@@ -147,6 +152,7 @@ export default function Home() {
             bgColor={slide.bgColor}
             textColor={slide.textColor}
             isStatic={slide.isStatic}
+            gif={slide.gif}
           >
             {slide.doodle}
             <div onClick={(e) => e.stopPropagation()}>

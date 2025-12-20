@@ -25,9 +25,9 @@ export default function AttendeesList() {
 
   return (
     <div className="w-full max-w-2xl mx-auto p-4">
-      <h3 className="text-xl md:text-2xl font-bold text-white mb-6 text-center animate-bounce">
+      {/* <h3 className="text-xl md:text-2xl font-bold text-white mb-6 text-center animate-bounce">
         Also failing to adult correctly:
-      </h3>
+      </h3> */}
       
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 max-h-[50vh] overflow-y-auto pr-2 scrollbar-hide">
         {attendees.map((attendee, index) => (
