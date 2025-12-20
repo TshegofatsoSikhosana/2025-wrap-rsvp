@@ -72,7 +72,6 @@ export default function Home() {
       title: "What to know...",
       content: `${`
         <p>It's about to be a lekker braai,</p>
-        <p>Bring your own booze (BYOB) for the fun!🥳</p>
         </br>
         <p><strong>Venue </strong> </p>
         <a target="_blank" style="font-style:italic;text-decoration: underline;color: blue" href="https://www.google.com/maps/search/?api=1&query=267+York+Ave%2C+Ferndale%2C+Randburg">
@@ -82,9 +81,34 @@ export default function Home() {
         </br>
         <p><strong>RSVP by 28 Dec 2025</strong></p>
         </br>
-        <p>Remember to keep noise levels at respectful levels</p>
         `}`,
       bgColor: "bg-white",
+      textColor: "text-black",     
+      gif: '/questions.gif'
+    },
+        {
+      id: "questions",
+      title: "Few more things...",
+      content: `${`
+        <ul>
+        <li>
+          There is no dress code 
+        </li>
+        <li>
+          Bring your own booze (BYOB) 🥳 
+        </li>
+        <li>
+          There is plenty of visitor's parking
+        </li>
+        <li>
+          Remember to keep noise levels at respectful levels throughtout the night
+        </li>
+        <li>
+          Reachout to <a target="_blank" style="font-style:italic;text-decoration: underline;color: blue" href="mailto:ts98sikhosana@gmail.com">email</a> if you have any questions
+        </li>
+        </ul>
+        `}`,
+      bgColor: "bg-wrapped-orange",
       textColor: "text-black",     
       gif: '/braai.gif'
     },
@@ -103,7 +127,6 @@ export default function Home() {
       content: "Who's bringing the vibes?",
       bgColor: "bg-wrapped-blue",
       textColor: "text-wrapped-green",
-      isStatic: true,
       component: <AttendeesList />,
       gif: '/dance_bob.gif'
     }

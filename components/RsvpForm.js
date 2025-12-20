@@ -103,7 +103,7 @@ export default function RsvpForm() {
           value={formData.name}
           onChange={handleChange}
           className="w-full p-3 rounded-lg bg-white/10 border border-white/20 focus:border-wrapped-pink focus:outline-none transition-colors"
-          placeholder="Your full name"
+          placeholder="Your name/nickname"
         />
       </div>
 
@@ -127,7 +127,7 @@ export default function RsvpForm() {
         </div>
       </div>
 
-      {formData.attending === 'yes' || formData.attending === 'maybe' && (
+      {(formData.attending === 'yes' || formData.attending === 'maybe') && (
         <div className="space-y-4 animate-in fade-in slide-in-from-top-2 duration-300">
           <div>
              <label className="block text-sm font-bold mb-1 ml-1" htmlFor="dietaryRestrictions">Dietary Restrictions</label>

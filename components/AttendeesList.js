@@ -25,12 +25,8 @@ export default function AttendeesList() {
 
   return (
     <div className="w-full max-w-2xl mx-auto p-4">
-      {/* <h3 className="text-xl md:text-2xl font-bold text-white mb-6 text-center animate-bounce">
-        Also failing to adult correctly:
-      </h3> */}
-      
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 max-h-[50vh] overflow-y-auto pr-2 scrollbar-hide">
-        {attendees.filter((attendee) => attendee.attending !== 'no').map((attendee, index) => (
+        {attendees.map((attendee, index) => (
           <div 
             key={attendee.id || index}
             className="bg-white/10 backdrop-blur-md rounded-xl p-4 border border-white/10 hover:border-wrapped-pink transition-all transform hover:scale-105 hover:-rotate-2 animate-in fade-in slide-in-from-bottom-4 duration-500"
@@ -38,11 +34,11 @@ export default function AttendeesList() {
           >
             <div className="font-bold text-lg text-white truncate">{attendee.name}</div>
             <div className="text-sm text-white/70">
-              {attendee.attending === 'yes' ? '🔥 Going!' : '🤔 Thinking about it'}
+              {attendee.attending === 'yes' ? '🔥 Going!' : attendee.attending === 'no' ? '🚫 Not going' : '🤔 Thinking about it'}
             </div>
             {attendee.songRequests && attendee.songRequests[0] && (
                <div className="text-xs text-wrapped-yellow mt-2 italic truncate">
-                 🎵 {attendee.songRequests[0]}
+                 🎵 {attendee.songRequests.filter(song => song !== '')?.length > 0 ? `${attendee.songRequests.filter(song => song !== '')?.length} song requests` : 'No song requests'}
                </div>
             )}
           </div>
@@ -50,9 +46,13 @@ export default function AttendeesList() {
       </div>
       
       {attendees.length === 0 && (
-         <div className="text-center text-white/50 italic">
+         <div className="text-center text-white italic">
             You're the first one here! Awkward...
+             <div className="slide-gif-container my-4 flex justify-center">
+              <img src={'./wait.gif'} alt="Slide visual" className="max-h-48 rounded-lg object-contain" />
+            </div>
          </div>
+         
       )}
     </div>
   );
