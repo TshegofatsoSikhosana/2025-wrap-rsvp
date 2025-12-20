@@ -7,9 +7,9 @@ export default function RsvpForm() {
     name: '',
     attending: '',
     plusOne: false,
-    guestCount: 1,
+    guestCount: 0,
     plusOneName: '',
-    songRequests: ['', '', ''],
+    songRequests: ['', '', '', '', ''],
     dietaryRestrictions: '',
   });
 
@@ -52,7 +52,13 @@ export default function RsvpForm() {
       }
 
       setStatus('success');
-      setMessage("You're on the list! Now scroll down to see your fellow party animals.");
+
+      if(formData.attending === 'no'){
+        setMessage("It's unfornutate you can't join, wishing you an awesome end of year!✨");
+      }else{
+        setMessage("You're on the list! Now scroll down to see your fellow party animals.");
+      }
+     
     } catch (error) {
       console.error(error);
       setStatus('error');
@@ -61,15 +67,28 @@ export default function RsvpForm() {
   };
 
   if (status === 'success') {
-    return (
-      <div className="text-center p-8 bg-wrapped-purple/20 rounded-xl border border-wrapped-purple">
-        <h3 className="text-2xl font-bold mb-4">Confirmed!</h3>
-        <p className="text-xl">{message}</p>
-          <div className="slide-gif-container my-4 flex justify-center">
-             <img src={'./amapiano.gif'} alt="Slide visual" className="max-h-48 rounded-lg object-contain" />
-          </div>
-      </div>
-    );
+    if(formData.attending === 'no'){
+      return (
+            <div className="text-center p-8 bg-wrapped-purple/20 rounded-xl border border-wrapped-purple">
+              <h3 className="text-2xl font-bold mb-4">Confirmed!</h3>
+              <p className="text-xl">{message}</p>
+                <div className="slide-gif-container my-4 flex justify-center">
+                  <img src={'./next_time.gif'} alt="Slide visual" className="max-h-48 rounded-lg object-contain" />
+                </div>
+            </div>
+          );
+    }
+    else{ 
+      return (
+            <div className="text-center p-8 bg-wrapped-purple/20 rounded-xl border border-wrapped-purple">
+              <h3 className="text-2xl font-bold mb-4">Confirmed!</h3>
+              <p className="text-xl">{message}</p>
+                <div className="slide-gif-container my-4 flex justify-center">
+                  <img src={'./amapiano.gif'} alt="Slide visual" className="max-h-48 rounded-lg object-contain" />
+                </div>
+            </div>
+          );
+    }
   }
 
   return (
@@ -108,51 +127,8 @@ export default function RsvpForm() {
         </div>
       </div>
 
-      {formData.attending === 'yes' && (
+      {formData.attending === 'yes' || formData.attending === 'maybe' && (
         <div className="space-y-4 animate-in fade-in slide-in-from-top-2 duration-300">
-           <label className="flex items-center gap-3 p-3 rounded-lg bg-white/5 cursor-pointer">
-            <input
-              type="checkbox"
-              name="plusOne"
-              checked={formData.plusOne}
-              onChange={handleChange}
-              className="accent-wrapped-pink w-5 h-5"
-            />
-            <span className="font-bold">Bringing Guests?</span>
-          </label>
-
-          {formData.plusOne && (
-            <div className="space-y-4">
-              <div>
-                <label className="block text-sm font-bold mb-1 ml-1" htmlFor="guestCount">How many guests?</label>
-                <input
-                  type="number"
-                  id="guestCount"
-                  name="guestCount"
-                  min="1"
-                  max="10"
-                  value={formData.guestCount}
-                  onChange={handleChange}
-                  className="w-full p-3 rounded-lg bg-white/10 border border-white/20 focus:border-wrapped-pink focus:outline-none"
-                />
-              </div>
-
-              <div>
-                <label className="block text-sm font-bold mb-1 ml-1" htmlFor="plusOneName">Guest Name(s)</label>
-                <p className="text-xs text-white/60 mb-2 ml-1">Separate multiple names with commas</p>
-                <input
-                  type="text"
-                  id="plusOneName"
-                  name="plusOneName"
-                  value={formData.plusOneName}
-                  onChange={handleChange}
-                  className="w-full p-3 rounded-lg bg-white/10 border border-white/20 focus:border-wrapped-pink focus:outline-none"
-                  placeholder="Their names"
-                />
-              </div>
-            </div>
-          )}
-
           <div>
              <label className="block text-sm font-bold mb-1 ml-1" htmlFor="dietaryRestrictions">Dietary Restrictions</label>
              <input
@@ -167,7 +143,7 @@ export default function RsvpForm() {
           </div>
 
           <div>
-             <label className="block text-sm font-bold mb-1 ml-1">Top 3 Song Requests</label>
+             <label className="block text-sm font-bold mb-1 ml-1">Top 5 Song Requests</label>
              <div className="space-y-2">
                {formData.songRequests.map((song, index) => (
                  <input

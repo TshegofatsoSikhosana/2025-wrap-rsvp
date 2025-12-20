@@ -30,7 +30,7 @@ export default function AttendeesList() {
       </h3> */}
       
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 max-h-[50vh] overflow-y-auto pr-2 scrollbar-hide">
-        {attendees.map((attendee, index) => (
+        {attendees.filter((attendee) => attendee.attending !== 'no').map((attendee, index) => (
           <div 
             key={attendee.id || index}
             className="bg-white/10 backdrop-blur-md rounded-xl p-4 border border-white/10 hover:border-wrapped-pink transition-all transform hover:scale-105 hover:-rotate-2 animate-in fade-in slide-in-from-bottom-4 duration-500"

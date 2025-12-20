@@ -6,7 +6,7 @@ const WrappedSlide = ({ title, content, bgColor = 'bg-wrapped-bg', textColor = '
     <div className={`slide-container ${bgColor} ${textColor}`}>
       <div className={!isStatic ? "animate-float h-120" : ""}>
         <h1 className="slide-title">{title}</h1>
-        {content && <p className="slide-content">{content}</p>}
+        {content && <div className="slide-content" dangerouslySetInnerHTML={{ __html: content }} />}
         {gif && (
           <div className="slide-gif-container my-4 flex justify-center">
              <img src={gif} alt="Slide visual" className="max-h-48 rounded-lg object-contain" />

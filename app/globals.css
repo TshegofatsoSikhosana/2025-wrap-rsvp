@@ -34,6 +34,14 @@
     @apply text-xl md:text-2xl font-medium max-w-2xl mx-auto opacity-90;
   }
 
+  .slide-content ul {
+    @apply list-disc list-inside text-left;
+  }
+
+  .slide-content li {
+    @apply mb-2;
+  }
+
   .gradient-text {
     @apply text-transparent bg-clip-text bg-linear-to-r from-wrapped-pink via-wrapped-purple to-wrapped-orange;
   }

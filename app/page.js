@@ -39,35 +39,7 @@ export default function Home() {
       content: "365 days working hard.",
       bgColor: "bg-wrapped-purple",
       textColor: "text-wrapped-yellow",
-      doodle: (
-        <>
-          <div className="doodle doodle-blob top-10 right-10 delay-100" />
-          <div className="doodle doodle-blob bottom-20 left-20 bg-wrapped-pink delay-700" />
-        </>
-      ),
-      gif: '/nod.gif'
-    },
-    {
-      id: "stat2",
-      title: "Now it's time to unwind...",
-      content: "Let's jump into the formalities",
-      bgColor: "bg-wrapped-orange",
-      textColor: "text-black",
-      doodle: (
-        <>
-          <div className="doodle doodle-blob top-0 right-0 delay-100" />
-          <div className="doodle doodle-blob bottom-0 left-0 bg-wrapped-pink delay-700" />
-        </>
-      ),
-      gif: '/chair.gif'
-    },
-    {
-      id: "invite",
-      title: "What to know...",
-      content: "The night sky because you are a star!, The night sky because you are a star!,The night sky because you are a star!,The night sky because you are a star!,The night sky because you are a star!",
-      bgColor: "bg-wrapped-lime",
-      textColor: "text-black",
-      doodle: (
+       doodle: (
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
            {[...Array(20)].map((_, i) => (
              <div key={i} className="doodle doodle-confetti" style={{
@@ -79,7 +51,42 @@ export default function Home() {
            ))}
         </div>
       ),
-      gif: '/notes.gif'
+      gif: '/nod.gif'
+    },
+    {
+      id: "stat2",
+      title: "Now it's time to unwind...",
+      content: "Let's jump into the formalities",
+      bgColor: "bg-wrapped-lime",
+      textColor: "text-black",
+      doodle: (
+        <>
+          <div className="doodle doodle-blob top-0 right-0 delay-100" />
+          <div className="doodle doodle-blob bottom-0 left-0 bg-white delay-700 h-100 w-100" />
+        </>
+      ),
+      gif: '/chair.gif'
+    },
+    {
+      id: "invite",
+      title: "What to know...",
+      content: `${`
+        <p>It's about to be a lekker braai,</p>
+        <p>Bring your own booze (BYOB) for the fun!🥳</p>
+        </br>
+        <p><strong>Venue </strong> </p>
+        <a target="_blank" style="font-style:italic;text-decoration: underline;color: blue" href="https://www.google.com/maps/search/?api=1&query=267+York+Ave%2C+Ferndale%2C+Randburg">
+        267 York Ave, Ferndale, Randburg
+        </a>
+        <p><strong>Time </strong> <p>31 Dec 2025, 14:00 - Next year 🎉</p></p>
+        </br>
+        <p><strong>RSVP by 28 Dec 2025</strong></p>
+        </br>
+        <p>Remember to keep noise levels at respectful levels</p>
+        `}`,
+      bgColor: "bg-white",
+      textColor: "text-black",     
+      gif: '/braai.gif'
     },
     {
       id: "rsvp",
