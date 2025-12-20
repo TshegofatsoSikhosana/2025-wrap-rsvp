@@ -49,17 +49,22 @@ export default function Home() {
     },
     {
       id: "stat2",
-      title: "Your Top Genre Was...",
-      content: "Software Engineering & Chaos Management.",
+      title: "Now it's time to unwind...",
+      content: "Let's jump into the formalities",
       bgColor: "bg-wrapped-orange",
       textColor: "text-black",
-      doodle: <div className="doodle doodle-zigzag top-1/2 left-0 rotate-12" />,
-      gif: '/confused.gif'
+      doodle: (
+        <>
+          <div className="doodle doodle-blob top-0 right-0 delay-100" />
+          <div className="doodle doodle-blob bottom-0 left-0 bg-wrapped-pink delay-700" />
+        </>
+      ),
+      gif: '/chair.gif'
     },
     {
       id: "invite",
-      title: "You belong in...",
-      content: "The night sky because you are a star!",
+      title: "What to know...",
+      content: "The night sky because you are a star!, The night sky because you are a star!,The night sky because you are a star!,The night sky because you are a star!,The night sky because you are a star!",
       bgColor: "bg-wrapped-lime",
       textColor: "text-black",
       doodle: (
@@ -74,7 +79,7 @@ export default function Home() {
            ))}
         </div>
       ),
-      gif: '/nod.gif'
+      gif: '/notes.gif'
     },
     {
       id: "rsvp",
@@ -89,7 +94,7 @@ export default function Home() {
       id: "attendees",
       title: "The Guest List",
       content: "Who's bringing the vibes?",
-      bgColor: "bg-wrapped-purple",
+      bgColor: "bg-wrapped-blue",
       textColor: "text-wrapped-green",
       isStatic: true,
       component: <AttendeesList />,

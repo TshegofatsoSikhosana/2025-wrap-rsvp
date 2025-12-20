@@ -62,9 +62,12 @@ export default function RsvpForm() {
 
   if (status === 'success') {
     return (
-      <div className="text-center p-8 bg-wrapped-purple/20 rounded-xl border border-wrapped-purple animate-pulse">
+      <div className="text-center p-8 bg-wrapped-purple/20 rounded-xl border border-wrapped-purple">
         <h3 className="text-2xl font-bold mb-4">Confirmed!</h3>
         <p className="text-xl">{message}</p>
+          <div className="slide-gif-container my-4 flex justify-center">
+             <img src={'./amapiano.gif'} alt="Slide visual" className="max-h-48 rounded-lg object-contain" />
+          </div>
       </div>
     );
   }
