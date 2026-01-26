@@ -85,7 +85,7 @@ export default function Home() {
         `}`,
       bgColor: "bg-white",
       textColor: "text-black",     
-      gif: '/mj.gif'
+      gif: '/party.gif'
     },
         {
       id: "questions",

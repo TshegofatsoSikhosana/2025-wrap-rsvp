@@ -84,7 +84,7 @@ export default function RsvpForm() {
               <h3 className="text-2xl font-bold mb-4">You're Booked!</h3>
               <p className="text-xl">{message}</p>
                 <div className="slide-gif-container my-4 flex justify-center">
-                  <img src={'./amapiano.gif'} alt="Slide visual" className="max-h-48 rounded-lg object-contain" />
+                  <img src={'./bart.gif'} alt="Slide visual" className="max-h-48 rounded-lg object-contain" />
                 </div>
             </div>
           );
@@ -129,21 +129,9 @@ export default function RsvpForm() {
 
       {(formData.attending === 'yes' || formData.attending === 'maybe') && (
         <div className="space-y-4 animate-in fade-in slide-in-from-top-2 duration-300">
-          <div>
-             <label className="block text-sm font-bold mb-1 ml-1" htmlFor="dietaryRestrictions">Dietary Restrictions</label>
-             <input
-              type="text"
-              id="dietaryRestrictions"
-              name="dietaryRestrictions"
-              value={formData.dietaryRestrictions}
-              onChange={handleChange}
-              className="w-full p-3 rounded-lg bg-white/10 border border-white/20 focus:border-wrapped-pink focus:outline-none"
-              placeholder="Allergies, etc."
-            />
-          </div>
 
           <div>
-             <label className="block text-sm font-bold mb-1 ml-1 text-wrapped-pink uppercase tracking-wider">The Setlist (Turn memories into melodies!)</label>
+             <label className="block text-sm font-bold mb-1 ml-1 text-wrapped-pink uppercase tracking-wider">Turn memories into melodies!(minimum of 2 songs)</label>
              <div className="space-y-2">
                {formData.songRequests.map((song, index) => (
                  <input
