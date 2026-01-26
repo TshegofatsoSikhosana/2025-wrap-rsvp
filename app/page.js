@@ -3,7 +3,7 @@
 import { useState, useRef } from 'react';
 import WrappedSlide from '@/components/WrappedSlide';
 import RsvpForm from '@/components/RsvpForm';
-import AttendeesList from '@/components/AttendeesList';
+import PlaylistView from '@/components/PlaylistView';
 
 export default function Home() {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -123,13 +123,24 @@ export default function Home() {
       component: <RsvpForm />
     },
     {
-      id: "attendees",
-      title: "The Headliners",
-      content: "See who's taking the main stage!",
+      id: "playlist",
+      title: "",
+      content: "The tracks that will set the stage 🎵",
       bgColor: "bg-wrapped-blue",
       textColor: "text-wrapped-green",
-      component: <AttendeesList />,
+      isStatic: true,
+      component: <PlaylistView />,
       gif: '/dance_bob.gif'
+    },
+     {
+      id: "last",
+      title: "",
+      content: "",
+      bgColor: "bg-wrapped-bg",
+      textColor: "text-wrapped-green",
+      isStatic: true,
+      component: <></>,
+      gif: '/entertained.gif'
     }
   ];
 

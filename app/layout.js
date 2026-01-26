@@ -7,7 +7,7 @@ const outfit = Outfit({
 });
 
 export const metadata = {
-  title: "Year End Wrapped",
+  title: "Tree of Life Community Karaoke Farewell",
   description: "You're invited!",
 };
 
