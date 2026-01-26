@@ -13,7 +13,7 @@ export default function Home() {
     {
       id: "intro",
       title: "The Grand Finale",
-      content: "Tree of Life Karaoke Farewell Party 🎤",
+      content: "Tree of Life Community Karaoke Farewell 🎤",
       bgColor: "bg-wrapped-bg",
       textColor: "text-wrapped-white",
       doodle: (
@@ -35,8 +35,8 @@ export default function Home() {
     },
     {
       id: "stat1",
-      title: "Tree of Life Community...",
-      content: "We've built something beautiful, but it's time for one last song.",
+      title: "A Superstar Send-off",
+      content: "Join the Tree of Life community for a Karaoke Farewell in true superstar style!",
       bgColor: "bg-wrapped-purple",
       textColor: "text-wrapped-yellow",
        doodle: (
@@ -51,12 +51,12 @@ export default function Home() {
            ))}
         </div>
       ),
-      gif: '/nod.gif'
+      gif: '/lil-yatchty.gif'
     },
     {
       id: "stat2",
-      title: "One Last Encore...",
-      content: "Grab the mic and let's celebrate the journey together!",
+      title: "Memories Into Melodies",
+      content: "Whether it's Beyoncé-level confidence or a MJ moonwalk—the mic is yours! 🎶",
       bgColor: "bg-wrapped-lime",
       textColor: "text-black",
       doodle: (
@@ -69,17 +69,17 @@ export default function Home() {
     },
     {
       id: "invite",
-      title: "The Playbill",
+      title: "The Lowdown",
       content: `${`
-        <p>It's time for the final performance!</p>
+        <p>It’s time to sing our hearts out!</p>
         </br>
-        <p><strong>Stage Location </strong> </p>
-        <a target="_blank" style="font-style:italic;text-decoration: underline;color: blue" href="https://www.google.com/maps/place/Beer+Park+Sandton/@-26.1022864,28.0470854,3784m/data=!3m2!1e3!4b1!4m6!3m5!1s0x1e957396aac80cdf:0xa7828f6fe172b80b!8m2!3d-26.102306!4d28.0573851!16s%2Fg%2F11y5tlw7zh?entry=ttu&g_ep=EgoyMDI2MDEyMS4wIKXMDSoKLDEwMDc5MjA3MUgBUAM%3D">
-        Beer Park Sandton
+        <p><strong>📍 Location </strong> </p>
+        <a target="_blank" style="font-style:italic;text-decoration: underline;color: blue" href="https://www.google.com/maps/search/?api=1&query=Beer+Park+Sandton+24+Central+6+Gwen+Lane+Sandown+Sandton+2196">
+        Beer Park Sandton (24 Central, 6 Gwen Lane, Sandown, Sandton)
         </a>
         </br>
         </br>
-        <p><strong>Showtime </strong> <p>30 Jan 2026, 13:00 - 17:00</p></p>
+        <p><strong>🕒 Showtime </strong> <p>Friday, 30 Jan 2026, 13:00 – 17:00</p></p>
         </br>
         </br>
         `}`,
@@ -93,25 +93,25 @@ export default function Home() {
       content: `${`
         <ul>
         <li>
-          Dress to impress (or just your best karaoke outfit!)
+          🍽️ Dinner will be served, so come hungry and ready to celebrate!
         </li>
         <li>
-          Bring your own beverages (BYOB) to lubricate those vocal cords 🥳 
+          🥂 Dress code: Come as you are — bonus points for big energy and good vibes
         </li>
         <li>
-          Plenty of parking for the crew
+          🎶 Choose a song that screams YOU and let’s make some memories!
         </li>
         <li>
-          Keep the vibes high and the noise respectful for the neighbors
+          💃🕺 Unforgettable performances and laughs guaranteed.
         </li>
         <li>
-          Reach out to the <a target="_blank" style="font-style:italic;text-decoration: underline;color: blue" href="mailto:ts98sikhosana@gmail.com">Director</a> with any questions
+          Reach out to the team with any questions!
         </li>
         </ul>
         `}`,
       bgColor: "bg-wrapped-orange",
       textColor: "text-black",     
-      gif: '/braai.gif'
+      gif: '/ready-wwe.gif'
     },
     {
       id: "rsvp",

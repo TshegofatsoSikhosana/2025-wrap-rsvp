@@ -54,9 +54,9 @@ export default function RsvpForm() {
       setStatus('success');
 
       if(formData.attending === 'no'){
-        setMessage("The show must go on, but we'll miss your solo! Wishing you an awesome end of year!✨");
+        setMessage("The show must go on, but we'll miss your solo/duet for Sahil & Revlen! Wishing you an awesome end of year!✨");
       }else{
-        setMessage("You're on the setlist! Now scroll down to see your fellow headliners.");
+        setMessage("You're on the setlist for Sahil & Revlen's farewell! Now scroll down to see your fellow headliners.");
       }
      
     } catch (error) {
@@ -70,7 +70,7 @@ export default function RsvpForm() {
     if(formData.attending === 'no'){
       return (
             <div className="text-center p-8 bg-wrapped-purple/20 rounded-xl border border-wrapped-purple">
-              <h3 className="text-2xl font-bold mb-4">Confirmed!</h3>
+              <h3 className="text-2xl font-bold mb-4">You're Booked!</h3>
               <p className="text-xl">{message}</p>
                 <div className="slide-gif-container my-4 flex justify-center">
                   <img src={'./next_time.gif'} alt="Slide visual" className="max-h-48 rounded-lg object-contain" />
@@ -143,7 +143,7 @@ export default function RsvpForm() {
           </div>
 
           <div>
-             <label className="block text-sm font-bold mb-1 ml-1 text-wrapped-pink uppercase tracking-wider">The Setlist (Top 5 Song Requests)</label>
+             <label className="block text-sm font-bold mb-1 ml-1 text-wrapped-pink uppercase tracking-wider">The Setlist (Turn memories into melodies!)</label>
              <div className="space-y-2">
                {formData.songRequests.map((song, index) => (
                  <input
