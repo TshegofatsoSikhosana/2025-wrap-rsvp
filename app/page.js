@@ -124,13 +124,13 @@ export default function Home() {
     },
     {
       id: "playlist",
-      title: "",
+      title: "The Event Mix",
       content: "The tracks that will set the stage 🎵",
       bgColor: "bg-wrapped-blue",
       textColor: "text-wrapped-green",
       isStatic: true,
       component: <PlaylistView />,
-      gif: '/dance_bob.gif'
+      gif: '/doof.gif'
     },
      {
       id: "last",
