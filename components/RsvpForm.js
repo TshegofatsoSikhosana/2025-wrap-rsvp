@@ -54,9 +54,9 @@ export default function RsvpForm() {
       setStatus('success');
 
       if(formData.attending === 'no'){
-        setMessage("It's unfornutate you can't join, wishing you an awesome end of year!✨");
+        setMessage("The show must go on, but we'll miss your solo! Wishing you an awesome end of year!✨");
       }else{
-        setMessage("You're on the list! Now scroll down to see your fellow party animals.");
+        setMessage("You're on the setlist! Now scroll down to see your fellow headliners.");
       }
      
     } catch (error) {
@@ -81,7 +81,7 @@ export default function RsvpForm() {
     else{ 
       return (
             <div className="text-center p-8 bg-wrapped-purple/20 rounded-xl border border-wrapped-purple">
-              <h3 className="text-2xl font-bold mb-4">Confirmed!</h3>
+              <h3 className="text-2xl font-bold mb-4">You're Booked!</h3>
               <p className="text-xl">{message}</p>
                 <div className="slide-gif-container my-4 flex justify-center">
                   <img src={'./amapiano.gif'} alt="Slide visual" className="max-h-48 rounded-lg object-contain" />
@@ -143,7 +143,7 @@ export default function RsvpForm() {
           </div>
 
           <div>
-             <label className="block text-sm font-bold mb-1 ml-1">Top 5 Song Requests</label>
+             <label className="block text-sm font-bold mb-1 ml-1 text-wrapped-pink uppercase tracking-wider">The Setlist (Top 5 Song Requests)</label>
              <div className="space-y-2">
                {formData.songRequests.map((song, index) => (
                  <input
@@ -166,7 +166,7 @@ export default function RsvpForm() {
         disabled={status === 'submitting'}
         className="w-full py-4 rounded-xl bg-gradient-to-r from-wrapped-pink to-wrapped-orange font-black text-xl hover:scale-[1.02] active:scale-[0.98] transition-transform shadow-lg shadow-wrapped-pink/20"
       >
-        {status === 'submitting' ? 'Sending...' : 'SEND IT'}
+        {status === 'submitting' ? 'Booking...' : 'SUBMIT TO SETLIST'}
       </button>
       
       {status === 'error' && (

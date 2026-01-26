@@ -12,8 +12,8 @@ export default function Home() {
   const slides = [
     {
       id: "intro",
-      title: "It's That Time of Year",
-      content: "Let's wrap up 2025 together!",
+      title: "The Grand Finale",
+      content: "Tree of Life Karaoke Farewell Party 🎤",
       bgColor: "bg-wrapped-bg",
       textColor: "text-wrapped-white",
       doodle: (
@@ -31,12 +31,12 @@ export default function Home() {
           ))}
         </div>
       ),
-      gif: '/minions.gif'
+      gif: '/wow-groot.gif'
     },
     {
       id: "stat1",
-      title: "You Spent...",
-      content: "365 days working hard.",
+      title: "Tree of Life Community...",
+      content: "We've built something beautiful, but it's time for one last song.",
       bgColor: "bg-wrapped-purple",
       textColor: "text-wrapped-yellow",
        doodle: (
@@ -55,8 +55,8 @@ export default function Home() {
     },
     {
       id: "stat2",
-      title: "Now it's time to unwind...",
-      content: "Let's jump into the formalities",
+      title: "One Last Encore...",
+      content: "Grab the mic and let's celebrate the journey together!",
       bgColor: "bg-wrapped-lime",
       textColor: "text-black",
       doodle: (
@@ -65,46 +65,47 @@ export default function Home() {
           <div className="doodle doodle-blob bottom-0 left-0 bg-white delay-700 h-100 w-100" />
         </>
       ),
-      gif: '/chair.gif'
+      gif: '/girl-singing.gif'
     },
     {
       id: "invite",
-      title: "What to know...",
+      title: "The Playbill",
       content: `${`
-        <p>It's about to be a lekker braai,</p>
+        <p>It's time for the final performance!</p>
         </br>
-        <p><strong>Venue </strong> </p>
-        <a target="_blank" style="font-style:italic;text-decoration: underline;color: blue" href="https://www.google.com/maps/search/?api=1&query=267+York+Ave%2C+Ferndale%2C+Randburg">
-        267 York Ave, Ferndale, Randburg
+        <p><strong>Stage Location </strong> </p>
+        <a target="_blank" style="font-style:italic;text-decoration: underline;color: blue" href="https://www.google.com/maps/place/Beer+Park+Sandton/@-26.1022864,28.0470854,3784m/data=!3m2!1e3!4b1!4m6!3m5!1s0x1e957396aac80cdf:0xa7828f6fe172b80b!8m2!3d-26.102306!4d28.0573851!16s%2Fg%2F11y5tlw7zh?entry=ttu&g_ep=EgoyMDI2MDEyMS4wIKXMDSoKLDEwMDc5MjA3MUgBUAM%3D">
+        Beer Park Sandton
         </a>
-        <p><strong>Time </strong> <p>31 Dec 2025, 14:00 - Next year 🎉</p></p>
         </br>
-        <p><strong>RSVP by 28 Dec 2025</strong></p>
+        </br>
+        <p><strong>Showtime </strong> <p>30 Jan 2026, 13:00 - 17:00</p></p>
+        </br>
         </br>
         `}`,
       bgColor: "bg-white",
       textColor: "text-black",     
-      gif: '/questions.gif'
+      gif: '/mj.gif'
     },
         {
       id: "questions",
-      title: "Few more things...",
+      title: "Show Notes",
       content: `${`
         <ul>
         <li>
-          There is no dress code 
+          Dress to impress (or just your best karaoke outfit!)
         </li>
         <li>
-          Bring your own booze (BYOB) 🥳 
+          Bring your own beverages (BYOB) to lubricate those vocal cords 🥳 
         </li>
         <li>
-          There is plenty of visitor's parking
+          Plenty of parking for the crew
         </li>
         <li>
-          Remember to keep noise levels at respectful levels throughtout the night
+          Keep the vibes high and the noise respectful for the neighbors
         </li>
         <li>
-          Reachout to <a target="_blank" style="font-style:italic;text-decoration: underline;color: blue" href="mailto:ts98sikhosana@gmail.com">email</a> if you have any questions
+          Reach out to the <a target="_blank" style="font-style:italic;text-decoration: underline;color: blue" href="mailto:ts98sikhosana@gmail.com">Director</a> with any questions
         </li>
         </ul>
         `}`,
@@ -114,7 +115,7 @@ export default function Home() {
     },
     {
       id: "rsvp",
-      title: "RSVP",
+      title: "Join the Setlist",
       content: "Don't miss the party.",
       bgColor: "bg-wrapped-bg",
       textColor: "text-white",
@@ -123,8 +124,8 @@ export default function Home() {
     },
     {
       id: "attendees",
-      title: "The Guest List",
-      content: "Who's bringing the vibes?",
+      title: "The Headliners",
+      content: "See who's taking the main stage!",
       bgColor: "bg-wrapped-blue",
       textColor: "text-wrapped-green",
       component: <AttendeesList />,

@@ -20,7 +20,7 @@ export default function AttendeesList() {
   }, []);
 
   if (loading) {
-    return <div className="text-white text-xl animate-pulse">Loading the squad...</div>;
+    return <div className="text-white text-xl animate-pulse">Gathering the choir...</div>;
   }
 
   return (
@@ -34,20 +34,20 @@ export default function AttendeesList() {
           >
             <div className="font-bold text-lg text-white truncate">{attendee.name}</div>
             <div className="text-sm text-white/70">
-              {attendee.attending === 'yes' ? '🔥 Going!' : attendee.attending === 'no' ? '🚫 Not going' : '🤔 Thinking about it'}
+              {attendee.attending === 'yes' ? '🎤 Ready to sing!' : attendee.attending === 'no' ? '🚫 Catching the next show' : '🤔 Warming up...'}
             </div>
-            {attendee.songRequests && attendee.songRequests[0] && (
-               <div className="text-xs text-wrapped-yellow mt-2 italic truncate">
-                 🎵 {attendee.songRequests.filter(song => song !== '')?.length > 0 ? `${attendee.songRequests.filter(song => song !== '')?.length} song requests` : 'No song requests'}
-               </div>
+            {attendee.songRequests && attendee.songRequests.filter(song => song !== '').length > 0 && (
+                <div className="text-xs text-wrapped-yellow mt-2 italic truncate">
+                  🎵 {attendee.songRequests.filter(song => song !== '').length} songs added to setlist
+                </div>
             )}
           </div>
         ))}
       </div>
       
       {attendees.length === 0 && (
-         <div className="text-center text-white italic">
-            You're the first one here! Awkward...
+          <div className="text-center text-white italic">
+             You're the first lead singer! Grab the mic...
              <div className="slide-gif-container my-4 flex justify-center">
               <img src={'./wait.gif'} alt="Slide visual" className="max-h-48 rounded-lg object-contain" />
             </div>
