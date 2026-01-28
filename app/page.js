@@ -103,10 +103,7 @@ export default function Home() {
           🎶 Choose a song that screams YOU and let’s make some memories!
         </li>
         <li>
-          💃🕺 Unforgettable performances and laughs guaranteed.
-        </li>
-        <li>
-          Reach out to the team with any questions!
+          📞 Reach out to the team with any questions!
         </li>
         </ul>
         `}`,
