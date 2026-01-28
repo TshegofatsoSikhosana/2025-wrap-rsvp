@@ -104,8 +104,16 @@ export default function AdminDashboard() {
           </div>
           
           <Link 
+            href="/orders" 
+            className="ml-auto bg-wrapped-lime text-black px-6 py-2 rounded-full hover:scale-105 active:scale-95 transition-all flex items-center gap-2 group"
+          >
+            <span className="group-hover:animate-bounce">🍽️</span>
+            View Menu Orders
+          </Link>
+
+          <Link 
             href="/playlist" 
-            className="ml-auto bg-wrapped-primary text-black px-6 py-2 rounded-full hover:scale-105 active:scale-95 transition-all flex items-center gap-2 group"
+            className="bg-wrapped-primary text-black px-6 py-2 rounded-full hover:scale-105 active:scale-95 transition-all flex items-center gap-2 group"
           >
             <span className="group-hover:animate-bounce">🎵</span>
             View Event Playlist
