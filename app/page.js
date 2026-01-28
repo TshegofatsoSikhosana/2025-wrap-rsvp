@@ -231,7 +231,7 @@ export default function Home() {
       </div>
       
       <div className="absolute bottom-8 left-0 w-full text-center text-white/50 text-sm animate-pulse z-40 pointer-events-none">
-        Tap or Scroll were you born in a barn?
+        Tap or Scroll to goto next slide
       </div>
     </main>
   );
