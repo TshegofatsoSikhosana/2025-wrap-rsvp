@@ -121,7 +121,7 @@ export default function RsvpForm() {
         />
       </div>
 
-      <div>
+      {/* <div>
         <label className="block text-sm font-bold mb-1 ml-1" htmlFor="menuOrder">Your Order</label>
         <input
           type="text"
@@ -132,7 +132,7 @@ export default function RsvpForm() {
           className="w-full p-3 rounded-lg bg-white/10 border border-white/20 focus:border-wrapped-pink focus:outline-none transition-colors"
           placeholder="What you're craving"
         />
-      </div>
+      </div> */}
 
       {/* <div>
         <label className="block text-sm font-bold mb-1 ml-1">Attending?</label>
