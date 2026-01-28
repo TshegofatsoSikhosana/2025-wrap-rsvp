@@ -1,4 +1,4 @@
-import PlaylistView from '@/components/PlaylistView';
+import PlaylistViewList from '@/components/PlaylistViewList';
 
 export const metadata = {
   title: 'Event Playlist | 2025 Wrap',
@@ -6,5 +6,5 @@ export const metadata = {
 };
 
 export default function PlaylistPage() {
-  return <PlaylistView />;
+  return <PlaylistViewList />;
 }

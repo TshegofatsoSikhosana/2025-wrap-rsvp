@@ -140,7 +140,7 @@ export default function Home() {
       bgColor: "bg-wrapped-blue",
       textColor: "text-wrapped-green",
       isStatic: true,
-      component: <PlaylistView />,
+      component: <PlaylistView showScoreboard={false} />,
       gif: '/doof.gif'
     },
      {
