@@ -81,8 +81,6 @@ export default function Home() {
         </br>
         </br>
         <p><strong>🕒 Showtime </strong> <p>Friday, 30 Jan 2026, 13:00 – 17:00</p></p>
-        </br>
-        </br>
         `}`,
       isStatic: true,
       bgColor: "bg-white",
