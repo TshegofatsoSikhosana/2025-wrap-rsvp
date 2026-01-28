@@ -9,9 +9,9 @@ const MenuCarousel = ({ onNext }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const menuItems = [
-    { id: 1, image: '/menu/page-1.png' },
-    { id: 2, image: '/menu/page-2.png' },
-    { id: 3, image: '/menu/page-3.png' },
+    { id: 1, image: '/menu/page-2.png' },
+    { id: 2, image: '/menu/page-3.png' },
+    { id: 3, image: '/menu/page-1.png' },
     { id: 4, image: '/menu/page-4.png' },
   ];
 
