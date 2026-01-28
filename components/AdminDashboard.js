@@ -32,6 +32,8 @@ export default function AdminDashboard() {
     }
 
     fetchAttendees();
+    const interval = setInterval(fetchAttendees, 10000);
+    return () => clearInterval(interval);
   }, []);
 
   const handleContributionChange = (id, value) => {

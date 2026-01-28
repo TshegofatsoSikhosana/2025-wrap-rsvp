@@ -28,6 +28,8 @@ export default function OrdersList() {
     }
 
     fetchOrders();
+    const interval = setInterval(fetchOrders, 10000);
+    return () => clearInterval(interval);
   }, []);
 
   if (loading) {

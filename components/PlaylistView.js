@@ -41,6 +41,8 @@ export default function PlaylistView() {
     }
 
     fetchSongs();
+    const interval = setInterval(fetchSongs, 10000);
+    return () => clearInterval(interval);
   }, []);
 
   if (loading) {

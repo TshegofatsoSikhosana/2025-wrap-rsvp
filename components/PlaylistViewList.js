@@ -42,6 +42,8 @@ export default function PlaylistViewList({ showScoreboard = true }) {
     }
 
     fetchSongs();
+    const interval = setInterval(fetchSongs, 10000);
+    return () => clearInterval(interval);
   }, []);
 
   const filteredSongs = songs.filter(song => !performedSongs.includes(song.id));

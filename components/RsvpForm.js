@@ -155,7 +155,7 @@ export default function RsvpForm() {
         <div className="space-y-4 animate-in fade-in slide-in-from-top-2 duration-300">
 
           <div>
-             <label className="block text-sm font-bold mb-1 ml-1 text-wrapped-pink uppercase tracking-wider">Turn memories into melodies!(minimum of 2 songs)</label>
+             <label className="block text-sm font-bold mb-1 ml-1 text-wrapped-pink uppercase tracking-wider">Turn memories into melodies! (minimum of 1 song)</label>
              <div className="space-y-2">
                {formData.songRequests.map((song, index) => (
                  <input
