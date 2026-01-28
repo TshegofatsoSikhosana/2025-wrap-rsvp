@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import { useAppContext } from '@/context/AppContext';
 
 export default function RsvpForm() {
-  const { userName, menuOrder } = useAppContext();
+  const { userName, menuOrder, isDeadlinePassed } = useAppContext();
   const [formData, setFormData] = useState({
     name: '',
     attending: 'yes',
@@ -28,6 +28,7 @@ export default function RsvpForm() {
   const [message, setMessage] = useState('');
 
   const handleChange = (e, index) => {
+    if (isDeadlinePassed) return;
     const { name, value, type, checked } = e.target;
     
     if (name === 'songRequests') {
@@ -44,8 +45,10 @@ export default function RsvpForm() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (isDeadlinePassed) return;
     setStatus('submitting');
     setMessage('');
+// ... (rest of handleSubmit stays the same)
 
     try {
       const res = await fetch('/api/rsvp', {
@@ -175,12 +178,20 @@ export default function RsvpForm() {
 
       <button
         type="submit"
-        disabled={status === 'submitting'}
-        className="w-full py-4 rounded-xl bg-gradient-to-r from-wrapped-pink to-wrapped-orange font-black text-xl hover:scale-[1.02] active:scale-[0.98] transition-transform shadow-lg shadow-wrapped-pink/20"
+        disabled={status === 'submitting' || isDeadlinePassed}
+        className={`w-full py-4 rounded-xl font-black text-xl transition-transform shadow-lg ${
+          isDeadlinePassed 
+          ? 'bg-white/10 text-white/30 cursor-not-allowed' 
+          : 'bg-gradient-to-r from-wrapped-pink to-wrapped-orange hover:scale-[1.02] active:scale-[0.98] shadow-wrapped-pink/20'
+        }`}
       >
-        {status === 'submitting' ? 'Booking...' : 'SUBMIT TO SETLIST'}
+        {isDeadlinePassed ? 'CHECK-IN CLOSED' : status === 'submitting' ? 'Booking...' : 'SUBMIT TO SETLIST'}
       </button>
       
+      {isDeadlinePassed && (
+        <p className="text-white/40 text-xs text-center mt-2 italic">The deadline for registrations has passed.</p>
+      )}
+
       {status === 'error' && (
         <p className="text-red-400 text-sm text-center mt-2">{message}</p>
       )}

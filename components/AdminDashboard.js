@@ -8,6 +8,9 @@ export default function AdminDashboard() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [updatingId, setUpdatingId] = useState(null);
+  // We don't have AppContext here yet, let's see if we need it
+  const deadline = new Date('2026-01-30T12:00:00');
+  const isDeadlinePassed = new Date() >= deadline;
 
   useEffect(() => {
     async function fetchAttendees() {
@@ -32,9 +35,12 @@ export default function AdminDashboard() {
     }
 
     fetchAttendees();
-    const interval = setInterval(fetchAttendees, 10000);
-    return () => clearInterval(interval);
-  }, []);
+    
+    if (!isDeadlinePassed) {
+      const interval = setInterval(fetchAttendees, 10000);
+      return () => clearInterval(interval);
+    }
+  }, [isDeadlinePassed]);
 
   const handleContributionChange = (id, value) => {
     setAttendees(prev => prev.map(a => 

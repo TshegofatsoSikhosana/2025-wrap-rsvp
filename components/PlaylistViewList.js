@@ -5,7 +5,7 @@ import { getAttendees } from '@/lib/RsvpService';
 import { useAppContext } from '@/context/AppContext';
 
 export default function PlaylistViewList({ showScoreboard = true }) {
-  const { performedSongs, togglePerformed, resetPerformed } = useAppContext();
+  const { performedSongs, togglePerformed, resetPerformed, isDeadlinePassed } = useAppContext();
   const [songs, setSongs] = useState([]);
   const [attendeeCount, setAttendeeCount] = useState(0);
   const [loading, setLoading] = useState(true);
@@ -42,9 +42,12 @@ export default function PlaylistViewList({ showScoreboard = true }) {
     }
 
     fetchSongs();
-    const interval = setInterval(fetchSongs, 10000);
-    return () => clearInterval(interval);
-  }, []);
+    
+    if (!isDeadlinePassed) {
+      const interval = setInterval(fetchSongs, 10000);
+      return () => clearInterval(interval);
+    }
+  }, [isDeadlinePassed]);
 
   const filteredSongs = songs.filter(song => !performedSongs.includes(song.id));
 

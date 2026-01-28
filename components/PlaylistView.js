@@ -2,8 +2,10 @@
 
 import { useEffect, useState } from 'react';
 import { getAttendees } from '@/lib/RsvpService';
+import { useAppContext } from '@/context/AppContext';
 
 export default function PlaylistView() {
+  const { isDeadlinePassed } = useAppContext();
   const [songs, setSongs] = useState([]);
   const [attendeeCount, setAttendeeCount] = useState(0);
   const [loading, setLoading] = useState(true);
@@ -41,9 +43,12 @@ export default function PlaylistView() {
     }
 
     fetchSongs();
-    const interval = setInterval(fetchSongs, 10000);
-    return () => clearInterval(interval);
-  }, []);
+    
+    if (!isDeadlinePassed) {
+      const interval = setInterval(fetchSongs, 10000);
+      return () => clearInterval(interval);
+    }
+  }, [isDeadlinePassed]);
 
   if (loading) {
     return (

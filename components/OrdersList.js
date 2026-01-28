@@ -2,8 +2,10 @@
 import { useEffect, useState } from 'react';
 import { getAttendees } from '@/lib/RsvpService';
 import Link from 'next/link';
+import { useAppContext } from '@/context/AppContext';
 
 export default function OrdersList() {
+  const { isDeadlinePassed } = useAppContext();
   const [attendees, setAttendees] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -28,9 +30,12 @@ export default function OrdersList() {
     }
 
     fetchOrders();
-    const interval = setInterval(fetchOrders, 10000);
-    return () => clearInterval(interval);
-  }, []);
+    
+    if (!isDeadlinePassed) {
+      const interval = setInterval(fetchOrders, 10000);
+      return () => clearInterval(interval);
+    }
+  }, [isDeadlinePassed]);
 
   if (loading) {
     return (
