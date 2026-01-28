@@ -135,7 +135,7 @@ export default function Home() {
     },
     {
       id: "playlist",
-      title: "The Event Mix",
+      title: "",
       content: "The tracks that will set the stage 🎵",
       bgColor: "bg-wrapped-blue",
       textColor: "text-wrapped-green",

@@ -82,7 +82,7 @@ export default function PlaylistView() {
           
           <div className="flex-1 min-w-0">
             <p className="text-[10px] md:text-xs font-black uppercase tracking-widest mb-1 opacity-60">Playlist</p>
-            <h1 className="text-3xl md:text-6xl font-black uppercase tracking-tighter leading-none mb-2 truncate">
+            <h1 className="text-2xl md:text-4xl font-black uppercase tracking-tighter leading-none mb-2 truncate">
               The <span className="text-wrapped-lime">Event</span> Mix
             </h1>
             <div className="flex items-center gap-2 text-xs md:text-sm font-bold">
