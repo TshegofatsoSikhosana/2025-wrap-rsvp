@@ -84,6 +84,7 @@ export default function Home() {
         </br>
         </br>
         `}`,
+      isStatic: true,
       bgColor: "bg-white",
       textColor: "text-black",     
       gif: '/party.gif'
@@ -92,6 +93,7 @@ export default function Home() {
       id: "questions",
       title: "Show Notes",
       content: `${`
+        
         <ul>
         <li>
           🍽️ Dinner will be served, so come hungry and ready to celebrate!
@@ -110,6 +112,7 @@ export default function Home() {
         </li>
         </ul>
         `}`,
+      isStatic: true,
       bgColor: "bg-wrapped-orange",
       textColor: "text-black",     
       gif: '/ready-wwe.gif'
