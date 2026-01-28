@@ -1,17 +1,28 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useAppContext } from '@/context/AppContext';
 
 export default function RsvpForm() {
+  const { userName, menuOrder } = useAppContext();
   const [formData, setFormData] = useState({
     name: '',
-    attending: '',
+    attending: 'yes',
     plusOne: false,
     guestCount: 0,
     plusOneName: '',
     songRequests: ['', '', '', '', ''],
     dietaryRestrictions: '',
+    menuOrder: '',
   });
+
+  useEffect(() => {
+    setFormData(prev => ({
+      ...prev,
+      name: userName || prev.name,
+      menuOrder: menuOrder || prev.menuOrder
+    }));
+  }, [userName, menuOrder]);
 
   const [status, setStatus] = useState('idle'); // idle, submitting, success, error
   const [message, setMessage] = useState('');
@@ -108,6 +119,19 @@ export default function RsvpForm() {
       </div>
 
       <div>
+        <label className="block text-sm font-bold mb-1 ml-1" htmlFor="menuOrder">Your Order</label>
+        <input
+          type="text"
+          id="menuOrder"
+          name="menuOrder"
+          value={formData.menuOrder}
+          onChange={handleChange}
+          className="w-full p-3 rounded-lg bg-white/10 border border-white/20 focus:border-wrapped-pink focus:outline-none transition-colors"
+          placeholder="What you're craving"
+        />
+      </div>
+
+      {/* <div>
         <label className="block text-sm font-bold mb-1 ml-1">Attending?</label>
         <div className="flex gap-4">
           {['yes', 'no', 'maybe'].map((option) => (
@@ -125,7 +149,7 @@ export default function RsvpForm() {
             </label>
           ))}
         </div>
-      </div>
+      </div> */}
 
       {(formData.attending === 'yes' || formData.attending === 'maybe') && (
         <div className="space-y-4 animate-in fade-in slide-in-from-top-2 duration-300">

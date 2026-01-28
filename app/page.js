@@ -1,9 +1,10 @@
 'use client';
 
-import { useState, useRef } from 'react';
+import React, { useState, useRef } from 'react';
 import WrappedSlide from '@/components/WrappedSlide';
 import RsvpForm from '@/components/RsvpForm';
 import PlaylistView from '@/components/PlaylistView';
+import MenuCarousel from '@/components/MenuCarousel';
 
 export default function Home() {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -114,6 +115,16 @@ export default function Home() {
       gif: '/ready-wwe.gif'
     },
     {
+      id: "menu",
+      title: "The Main Act",
+      content: "A feast fit for a superstar! Check out what's on the menu 🍽️",
+      bgColor: "bg-wrapped-purple",
+      textColor: "text-white",
+      isStatic: true,
+      component: <MenuCarousel />,
+      gif: ''
+    },
+    {
       id: "rsvp",
       title: "Join the Setlist",
       content: "Don't miss the party.",
@@ -203,7 +214,7 @@ export default function Home() {
           >
             {slide.doodle}
             <div onClick={(e) => e.stopPropagation()}>
-               {slide.component}
+               {slide.component && React.cloneElement(slide.component, { onNext: nextSlide, onPrev: prevSlide })}
             </div>
           </WrappedSlide>
         </div>
