@@ -157,9 +157,7 @@ export default function Home() {
   ];
 
   const nextSlide = () => {
-    if (currentSlide < slides.length - 1) {
-      setCurrentSlide(prev => prev + 1);
-    }
+    setCurrentSlide(prev => (prev + 1) % slides.length);
   };
 
   const prevSlide = () => {
