@@ -37,6 +37,22 @@ export default function OrdersList() {
     }
   }, [isDeadlinePassed]);
 
+  const handleExport = () => {
+    const exportContent = attendees
+      .map(attendee => `${attendee.name} - ${attendee.menuOrder}`)
+      .join('\n');
+    
+    const blob = new Blob([exportContent], { type: 'text/plain' });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = 'guest_orders.txt';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    URL.revokeObjectURL(url);
+  };
+
   if (loading) {
     return (
       <div className="min-h-screen bg-wrapped-bg flex items-center justify-center">
@@ -58,12 +74,19 @@ export default function OrdersList() {
         </div>
         
         <div className="flex gap-4">
-          <Link 
+          <button 
+            onClick={handleExport}
+            disabled={attendees.length === 0}
+            className="bg-wrapped-lime text-black px-6 py-3 rounded-full hover:scale-105 active:scale-95 transition-all font-bold uppercase tracking-widest text-xs shadow-lg shadow-wrapped-lime/20 disabled:opacity-50 disabled:pointer-events-none"
+          >
+            Export Orders (.txt)
+          </button>
+          {/* <Link 
             href="/admin" 
-            className="bg-white/10 text-white px-6 py-3 rounded-full hover:bg-white/20 transition-all font-bold uppercase tracking-widest text-xs border border-white/10"
+            className="bg-white/10 text-white px-6 py-3 rounded-full hover:bg-white/20 transition-all font-bold uppercase tracking-widest text-xs border border-white/10 flex items-center"
           >
             Back to Admin
-          </Link>
+          </Link> */}
         </div>
       </header>
 

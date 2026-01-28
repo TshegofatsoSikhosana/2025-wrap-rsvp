@@ -11,7 +11,7 @@ export default function RsvpForm() {
     plusOne: false,
     guestCount: 0,
     plusOneName: '',
-    songRequests: ['', '', '', '', ''],
+    songRequests: ['', '', ''],
     dietaryRestrictions: '',
     menuOrder: '',
   });

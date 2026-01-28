@@ -64,7 +64,7 @@ export default function PlaylistView() {
     <div className="text-wrapped-white font-display p-4 md:p-8 scrollbar-hide flex flex-col items-center">
       <div className="max-w-4xl w-full mx-auto">
         {/* Attendee Stats Card */}
-        <div className="mb-8 p-6 bg-black/40 backdrop-blur-xl rounded-3xl border border-wrapped-lime/30 shadow-[0_0_20px_rgba(190,242,100,0.1)] flex items-center justify-between group hover:border-wrapped-lime transition-all duration-500">
+        {/* <div className="mb-8 p-6 bg-black/40 backdrop-blur-xl rounded-3xl border border-wrapped-lime/30 shadow-[0_0_20px_rgba(190,242,100,0.1)] flex items-center justify-between group hover:border-wrapped-lime transition-all duration-500">
           <div>
             <p className="text-[10px] md:text-xs font-black uppercase tracking-[0.2em] text-wrapped-lime opacity-80">Confirmed Headliners</p>
           </div>
@@ -72,7 +72,7 @@ export default function PlaylistView() {
             <div className="text-4xl md:text-5xl font-black text-wrapped-lime group-hover:scale-110 transition-transform duration-500">{attendeeCount}</div>
             <p className="text-[10px] uppercase font-bold opacity-40">Attending</p>
           </div>
-        </div>
+        </div> */}
 
         <header className="flex items-center gap-6 mb-4 mt-4">
           <div className="w-24 h-24 md:w-32 md:h-32 bg-black rounded-lg shadow-2xl flex items-center justify-center relative overflow-hidden group shrink-0 border border-white/10">
