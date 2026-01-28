@@ -39,7 +39,8 @@
   }
 
   .slide-content li {
-    @apply mb-2;
+    @apply mb-1;
+    font-size: 20px
   }
 
   .gradient-text {

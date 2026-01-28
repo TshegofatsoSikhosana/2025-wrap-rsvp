@@ -97,10 +97,13 @@ export default function Home() {
           🍽️ Dinner will be served, so come hungry and ready to celebrate!
         </li>
         <li>
-          🥂 Dress code: Come as you are — bonus points for big energy and good vibes
+          🥂 Dress code: Come as you are — big energy and good vibes
         </li>
         <li>
           🎶 Choose a song that screams YOU and let’s make some memories!
+        </li>
+        <li>
+          💃🕺 Unforgettable performances and laughs guaranteed.
         </li>
         <li>
           📞 Reach out to the team with any questions!
