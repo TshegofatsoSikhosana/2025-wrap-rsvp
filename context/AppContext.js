@@ -7,15 +7,24 @@ const AppContext = createContext();
 export function AppProvider({ children }) {
   const [userName, setUserName] = useState('');
   const [menuOrder, setMenuOrder] = useState('');
+  const [performedSongs, setPerformedSongs] = useState([]);
 
-  // Persist to local storage helper if needed, 
-  // but for now just memory as it's a SPA-like flow
-  
+  const togglePerformed = (songId) => {
+    setPerformedSongs((prev) => 
+      prev.includes(songId) ? prev : [...prev, songId]
+    );
+  };
+
+  const resetPerformed = () => setPerformedSongs([]);
+
   const value = {
     userName,
     setUserName,
     menuOrder,
     setMenuOrder,
+    performedSongs,
+    togglePerformed,
+    resetPerformed,
   };
 
   return (
