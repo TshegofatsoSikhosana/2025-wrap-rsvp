@@ -78,14 +78,16 @@ const MenuCarousel = ({ onNext }) => {
             className="relative w-full max-w-2xl bg-white/5 rounded-3xl overflow-hidden border border-white/10 flex flex-col items-center"
             onClick={(e) => e.stopPropagation()}
           >
-            {/* Close Button */}
-            <button 
-              onClick={() => setIsModalOpen(false)}
-              className="absolute top-4 right-4 z-50 p-2 bg-black/40 hover:bg-black/60 rounded-full text-white backdrop-blur-md transition-colors"
-            >
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
-            </button>
-
+            {/* Modal Header */}
+            <div className="w-full relative flex items-center justify-center p-6 border-b border-white/10">
+              <h2 className="text-2xl font-black uppercase tracking-widest text-white">Menu</h2>
+              <button 
+                onClick={() => setIsModalOpen(false)}
+                className="absolute right-4 p-2 bg-white/5 hover:bg-white/10 rounded-full text-white backdrop-blur-md transition-colors border border-white/10"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+              </button>
+            </div>
             {/* Carousel Container */}
             <div className="relative aspect-[3/4] w-full max-h-[70vh] flex items-center justify-center overflow-hidden">
               {menuItems.map((item, index) => (
@@ -102,32 +104,35 @@ const MenuCarousel = ({ onNext }) => {
                   />
                 </div>
               ))}
+            </div>
 
-              {/* Navigation */}
+            {/* Controls at the Bottom */}
+            <div className="w-full flex items-center justify-between p-6 bg-black/20">
               <button
                 onClick={prevMenuSlide}
-                className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/10 hover:bg-white/20 p-4 rounded-full backdrop-blur-md transition-all text-white border border-white/10"
+                className="bg-white/10 hover:bg-white/20 p-4 rounded-full backdrop-blur-md transition-all text-white border border-white/10"
               >
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><path d="m15 18-6-6 6-6"/></svg>
               </button>
+
+              {/* Indicators */}
+              <div className="flex gap-2">
+                {menuItems.map((_, index) => (
+                  <div
+                    key={index}
+                    className={`h-1.5 rounded-full transition-all duration-300 ${
+                      index === currentIndex ? 'w-8 bg-wrapped-primary' : 'w-2 bg-white/30'
+                    }`}
+                  />
+                ))}
+              </div>
+
               <button
                 onClick={nextMenuSlide}
-                className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/10 hover:bg-white/20 p-4 rounded-full backdrop-blur-md transition-all text-white border border-white/10"
+                className="bg-white/10 hover:bg-white/20 p-4 rounded-full backdrop-blur-md transition-all text-white border border-white/10"
               >
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><path d="m9 18 6-6-6-6"/></svg>
               </button>
-            </div>
-
-            {/* Indicators */}
-            <div className="flex gap-2 p-6">
-              {menuItems.map((_, index) => (
-                <div
-                  key={index}
-                  className={`h-1.5 rounded-full transition-all duration-300 ${
-                    index === currentIndex ? 'w-8 bg-wrapped-primary' : 'w-2 bg-white/30'
-                  }`}
-                />
-              ))}
             </div>
             
             <div className="pb-8 px-6 text-center">
