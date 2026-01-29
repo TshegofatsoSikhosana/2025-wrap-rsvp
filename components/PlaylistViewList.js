@@ -10,12 +10,15 @@ export default function PlaylistViewList({ showScoreboard = true }) {
   const [attendeeCount, setAttendeeCount] = useState(0);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [exporting, setExporting] = useState(false);
+  const [attendees, setAttendees] = useState([]);
 
   useEffect(() => {
     async function fetchSongs() {
       try {
         const result = await getAttendees();
         if (result.success) {
+          setAttendees(result.data);
           const allSongs = result.data.flatMap(attendee => 
             (attendee.songRequests || [])
               .filter(song => song && song.trim() !== '')
@@ -42,12 +45,28 @@ export default function PlaylistViewList({ showScoreboard = true }) {
     }
 
     fetchSongs();
-    
-    if (!isDeadlinePassed) {
-      const interval = setInterval(fetchSongs, 10000);
-      return () => clearInterval(interval);
-    }
   }, [isDeadlinePassed]);
+
+  const handleExport = async () => {
+    setExporting(true);
+    try {
+      const exportText = attendees
+        .filter(a => a.songRequests && a.songRequests.some(s => s && s.trim() !== ''))
+        .map(a => {
+          const validSongs = a.songRequests.filter(s => s && s.trim() !== '');
+          return `${a.name || 'Anonymous'}:\n${validSongs.map(s => `- ${s}`).join('\n')}`;
+        })
+        .join('\n\n');
+
+      await navigator.clipboard.writeText(exportText);
+      alert('Playlist exported to clipboard!');
+    } catch (err) {
+      console.error('Failed to export:', err);
+      alert('Failed to export playlist.');
+    } finally {
+      setExporting(false);
+    }
+  };
 
   const filteredSongs = songs.filter(song => !performedSongs.includes(song.id));
 
@@ -112,6 +131,13 @@ export default function PlaylistViewList({ showScoreboard = true }) {
           <h1 className="text-2xl md:text-3xl font-black uppercase tracking-tighter leading-none mb-1 truncate">
             The <span className="text-wrapped-lime">Event</span> Mix
           </h1>
+          <button 
+            onClick={handleExport}
+            disabled={exporting}
+            className="mt-2 text-[10px] font-black uppercase tracking-widest text-wrapped-lime hover:underline disabled:opacity-50"
+          >
+            {exporting ? 'Exporting...' : 'Export Songs'}
+          </button>
         </div>
       </header>
 

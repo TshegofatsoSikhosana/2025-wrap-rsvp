@@ -31,10 +31,10 @@ export default function OrdersList() {
 
     fetchOrders();
     
-    if (!isDeadlinePassed) {
-      const interval = setInterval(fetchOrders, 10000);
-      return () => clearInterval(interval);
-    }
+    // if (!isDeadlinePassed) {
+    //   const interval = setInterval(fetchOrders, 10000);
+    //   return () => clearInterval(interval);
+    // }
   }, [isDeadlinePassed]);
 
   const handleExport = () => {

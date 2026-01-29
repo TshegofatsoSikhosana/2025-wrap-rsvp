@@ -11,12 +11,15 @@ export default function PlaylistView() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [showModal, setShowModal] = useState(false);
+  const [exporting, setExporting] = useState(false);
+  const [attendees, setAttendees] = useState([]);
 
   useEffect(() => {
     async function fetchSongs() {
       try {
         const result = await getAttendees();
         if (result.success) {
+          setAttendees(result.data);
           const allSongs = result.data.flatMap(attendee => 
             (attendee.songRequests || [])
               .filter(song => song && song.trim() !== '')
@@ -43,12 +46,28 @@ export default function PlaylistView() {
     }
 
     fetchSongs();
-    
-    if (!isDeadlinePassed) {
-      const interval = setInterval(fetchSongs, 10000);
-      return () => clearInterval(interval);
-    }
   }, [isDeadlinePassed]);
+
+  const handleExport = async () => {
+    setExporting(true);
+    try {
+      const exportText = attendees
+        .filter(a => a.songRequests && a.songRequests.some(s => s && s.trim() !== ''))
+        .map(a => {
+          const validSongs = a.songRequests.filter(s => s && s.trim() !== '');
+          return `${a.name}:\n${validSongs.map(s => `- ${s}`).join('\n')}`;
+        })
+        .join('\n\n');
+
+      await navigator.clipboard.writeText(exportText);
+      alert('Playlist exported to clipboard!');
+    } catch (err) {
+      console.error('Failed to export:', err);
+      alert('Failed to export playlist.');
+    } finally {
+      setExporting(false);
+    }
+  };
 
   if (loading) {
     return (
@@ -99,6 +118,14 @@ export default function PlaylistView() {
             className="px-8 py-3 bg-wrapped-lime text-black font-black text-sm uppercase tracking-widest rounded-full hover:scale-105 transition-transform shadow-lg shadow-wrapped-lime/20"
           >
             View Tracks
+          </button>
+          
+          <button 
+            onClick={handleExport}
+            disabled={exporting}
+            className="ml-4 px-8 py-3 bg-transparent border border-wrapped-lime text-wrapped-lime font-black text-sm uppercase tracking-widest rounded-full hover:bg-wrapped-lime/10 transition-all disabled:opacity-50"
+          >
+            {exporting ? 'Exporting...' : 'Export Songs'}
           </button>
         </div>
 

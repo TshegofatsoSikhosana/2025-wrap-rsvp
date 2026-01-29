@@ -36,10 +36,10 @@ export default function AdminDashboard() {
 
     fetchAttendees();
     
-    if (!isDeadlinePassed) {
-      const interval = setInterval(fetchAttendees, 10000);
-      return () => clearInterval(interval);
-    }
+    // if (!isDeadlinePassed) {
+    //   const interval = setInterval(fetchAttendees, 10000);
+    //   return () => clearInterval(interval);
+    // }
   }, [isDeadlinePassed]);
 
   const handleContributionChange = (id, value) => {
